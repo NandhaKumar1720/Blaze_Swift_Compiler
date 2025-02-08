@@ -22,4 +22,3 @@ EXPOSE 3000
 # Start the server
 CMD ["node", "server.js"]
 
-docker exec -it swift-container swift --version
