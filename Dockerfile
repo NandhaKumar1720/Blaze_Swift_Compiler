@@ -4,6 +4,9 @@ FROM node:16
 # Install Swift
 RUN apt-get update && apt-get install -y swift
 
+# Verify Swift installation
+RUN swift --version
+
 # Set the working directory inside the container
 WORKDIR /app
 
@@ -21,4 +24,3 @@ EXPOSE 3000
 
 # Start the server
 CMD ["node", "server.js"]
-
