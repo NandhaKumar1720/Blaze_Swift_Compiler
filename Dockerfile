@@ -7,7 +7,15 @@ RUN apt-get update && apt-get install -y \
     libicu-dev \
     wget \
     unzip \
-    && rm -rf /var/lib/apt/lists/*
+    curl \
+    build-essential
+
+# Install Node.js and npm
+RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash - && \
+    apt-get install -y nodejs
+
+# Verify Node.js and npm installation
+RUN node -v && npm -v
 
 # Download and install Swift
 RUN wget https://download.swift.org/swift-5.7-release/ubuntu2204/swift-5.7-RELEASE/swift-5.7-RELEASE-ubuntu22.04.tar.gz \
@@ -17,8 +25,6 @@ RUN wget https://download.swift.org/swift-5.7-release/ubuntu2204/swift-5.7-RELEA
 
 # Set Swift environment variables
 ENV PATH="/usr/local/swift/usr/bin:$PATH"
-
-RUN swift --version
 
 # Set working directory
 WORKDIR /app
