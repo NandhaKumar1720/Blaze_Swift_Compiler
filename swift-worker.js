@@ -28,7 +28,7 @@ function cleanupFiles(...files) {
         fs.writeFileSync(sourceFile, code);
 
         // Execute the Swift code
-        const swiftCommand = "swift"; // Ensure Swift is installed in the environment
+        const swiftCommand = "/usr/local/swift/usr/bin/swift"; // Use full path to Swift binary
         let output = "";
 
         try {
